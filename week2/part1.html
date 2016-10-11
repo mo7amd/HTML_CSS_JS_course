@@ -1,0 +1,60 @@
+<html>
+<head>
+  <title>JavaScript Guessing Game </title>
+</head>
+<body onload="do_game()">
+  <script >
+  var target;
+  var guessing_input_text;
+  var finished = false;
+  var guesses=0;
+  var colors = ["red","green","blue","brown","white","black","cyan","darkblue","gold","grey","navy","orange","salmon","silver","aqua","azure","darkgreen","darkgrey","skyblue","snow"];
+
+  function do_game(){
+  
+    target =Math.floor(Math.random()*21);
+    while(!finished){
+      guessing_input_text = prompt("I am thinking of one of the following colors: \n\n"+
+                            "****************************************** \n\n"+
+                                   "1-red                 2-green \n\n"+
+                                   "3-blue                4-brown \n\n"+
+                                   "5-white              6-black \n\n"+
+                                   "7-cyan                8-darkblue \n\n"+
+                                   "9-gold                 10-grey \n\n"+
+                                   "11-navy                12-orange \n\n"+
+                                   "13-salmon              14-silver \n\n"+
+                                   "15-aqua                16-azure \n\n"+
+                                   "17-darkgreen           18-darkgrey \n\n"+
+                                   "19-skyblue             20-snow \n\n"+
+                                   "********************************************\n\n"+
+                                 "What is the color ?");
+      guesses++;
+      finished = check_guess();
+    }
+    document.body.style.backgroundColor = colors[target-1];
+  }
+
+  function check_guess(){
+    var index = colors.indexOf(guessing_input_text);
+    index+=1;
+
+      if(index==0){
+        alert("please write one of the 20 colors ONLY !!");
+        guesses--;
+        return false;
+      }
+      if(index>target){
+        alert("Your color is too large !!!");
+        return false;
+      }
+      if(index<target){
+        alert("Your color is too small !!!");
+        return false;
+      }
+      document.body.style.backgroundColor = colors[target-1];
+      alert("You got it !! the color was "+colors[target-1]+"\n\n it took you "+guesses+" guesses to get the color!");
+      return true;
+  }
+  </script>
+</body>
+</html>
