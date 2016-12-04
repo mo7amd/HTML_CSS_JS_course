@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Matching Game</title>
+	<title>Matching Game</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="icon" href="smile.ico" type="image/x-icon"></link>
+  
 </head>
 <style>
 img {
@@ -13,35 +17,57 @@ div {
   height: 500px;
 }
 #rightSide {
-  left : 500px;
+	align-content: center;
+  left : 550px;
   border-left: 1px solid black;
+
 }
+	#leftSide {
+		left: 1;
+	}
 img:hover {
   height: 13  0px;
   width: 130px;
 }
+	body {
+		background-color: #3b5998;
+/*		background-color: white;*/
+	}
+	h1 {
+		color : white;
+	}
+	h2 {
+		color:white;
+	}
 </style>
 <body  id="the_body" onload="generateFaces()">
-  <h1>Matching Game</h1>
-  <h3>Click on the extra smiling face on the left.</h3>
+	<center><h1>Matching Game </h1></center>
+	<center><h2>Click on the extra smiling face on the left</h2></center>
+	<div id="level"></div>
+	<div id="maxlevel"></div>
+<!--********************************************-->
   <div id="leftSide"></div>
   <div id="rightSide"></div>
+<!--********************************************-->
   <script>
   var numberOfFaces=5;
   var height=64;var width=64;
+	var level=1;
   function generateFaces(){
     var theLeftSide = document.getElementById("leftSide");
     var theRightSide = document.getElementById("rightSide");
     var theBody = document.getElementsByTagName("body")[0];
-
+		var currentLevel = document.getElementById("level");
+		var maxLevel = document.getElementById("maxlevel");
     for(var i=0;i<numberOfFaces;i++){
       var randomTop = Math.random() * 401;
       var randomLeft = Math.random() * 401;
+			var counter=0;
       randomLeft = Math.floor(randomLeft);
       randomTop = Math.floor(randomTop);
       var img = document.createElement("img");
-      img.src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
-
+			
+      img.src="smile.png";
       img.style.top = randomTop + "px";
       img.style.left = randomLeft + "px";
       theLeftSide.appendChild(img);
@@ -70,9 +96,17 @@ img:hover {
       theLeftSide.lastChild.onclick = null;
       location.reload();
     };
-
-
   }
   </script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85610151-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
